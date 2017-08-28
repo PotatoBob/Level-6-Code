@@ -135,6 +135,7 @@ questions[4].correctAnswer = 2;
   }
 
   //from the EnterQuery file
+  //useless unless using JSON (we're not)
   function addQuestionFromQuery() {
     var query, c0, c1, c2, c3, c4, cA;
     query = getQueryVariable("question");
@@ -160,6 +161,7 @@ questions[4].correctAnswer = 2;
   }
 
   //from a JSON which you can store locally in EnterQuery
+  //Now it's useless, we're back to using files
   function addQuestionFromJSON() {
     var query, c0, c1, c2, c3, c4, cA;
     location = localStorage.getItem("qJSON");
@@ -175,6 +177,7 @@ questions[4].correctAnswer = 2;
   }
 
   //getting the &variable= stuff
+  //don't need anymore
   function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
@@ -187,7 +190,7 @@ questions[4].correctAnswer = 2;
     return false;
   }
 
-  //useless class for opening in new tab/window(?)
+  //useless function for opening in new tab/window(?)
   function test() {
     var thing = "mail";
     window.open('http://'+thing+'.google.com');
