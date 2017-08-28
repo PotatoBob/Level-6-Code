@@ -3,13 +3,34 @@
   <h1 align="center">QUIZ</h1>
 </head>
 
-<body onload="startup()" style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
+<body  style="background-color:#bbccdd;font-weight:bold;font-size:22px;">
   <pre style="white-space:pre-wrap;"><code>
   <div id="docBody"style="overflow:visible;"></div>
 </code></pre>
 </body>
 
 <script>
+//put this in the body tag: onload="addLoadEvent()"
+//http://www.htmlgoodies.com/beyond/javascript/article.php/3724571/Using-Multiple-JavaScript-Onload-Functions.htm
+  function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+addLoadEvent(startup);
+addLoadEvent(fileToQuestions);
+//I changed the file from the default (in a comment) to "Question.txt" which doesn't work
+//addLoadEvent(function() {
+  /* more code to run on page load */
+//});
   function Question(){
     this.question = "";
     this.choices = [];
@@ -23,7 +44,9 @@
   var questions = [];
   
   var currentQuestion;
-    
+
+
+
   function startup(){
     currentQuestion = 0;
     
@@ -110,7 +133,8 @@ questions[4].correctAnswer = 2;
   }
 
   function fileToQuestions() {
-    var file = document.getElementById('fileToLoad').files[0];
+    //var file = document.getElementById('fileToLoad').files[0];
+    var file = "Question.txt";
 
     var reader = new FileReader();
     reader.onload = function(progressEvent){
