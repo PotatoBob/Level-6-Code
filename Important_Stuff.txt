@@ -1,0 +1,9 @@
+Use this stuff
+- function Question() {
+	this.question = ""; <!--this is the question name-->
+	this.choices = []; <!--this is the array of choices in strings A-E-->
+	this.correctAnswer = ""; <!--this will have a number 0-4 corresponding to answers-->
+	this.userAnswer = ""; <!--this is what answer they select-->
+}
+var questions = []; <!--array of every question-->
+var currentQuestion; <!-- a number which is starting from 0 to be the current number-->

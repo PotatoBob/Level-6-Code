@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>Hello! Welcome to level 4!</h1>
+	<div id="page-wrapper"> <!--This is in the body so it actually shows after the title-->
+ 
+		<h1>Text File Reader</h1>
+		<div>
+			Select a text file: 
+			<input type="file" id="fileInput">
+		</div>
+		<pre id="fileDisplayArea"><pre>
+ 
+	</div>
+<script type="text/javascript"> 
+	window.onload = function() {
+		var fileInput = document.getElementById('fileInput');
+		var fileDisplayArea = document.getElementById('fileDisplayArea');
+ 
+		fileInput.addEventListener('change', function(e) {
+			var file = fileInput.files[0];
+			var textType = /text.*/;
+ 
+			if (file.type.match(textType)) {
+				var reader = new FileReader();
+ 
+				reader.onload = function(e) {
+					var fileContents = reader.result;
+					var lines[]; //array.length
+					var line;
+					var totalLines=0;
+					var questions[];
+					var question;
+					for(var i = 0; i<fileContents.length; i++) {
+						var character = fileContents[i];
+						if(character=='\n';) {
+							lines[totalLines++] = line;
+						} else {
+							line+=character;
+						}
+					}
+					//have the code here to do stuff based on the read file
+					//https://github.com/eligrey/FileSaver.js
+					//To create file maybe
+					//https://eligrey.com/demos/FileSaver.js/
+				}
+ 
+				reader.readAsText(file);	
+			} else {
+				fileDisplayArea.innerText = "File not supported!"
+			}
+		});
+}
+</script>
+</body>
+</html>

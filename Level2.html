@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+ <h1>Hello! Welcome to level 2!</h1>
+ <button onclick="isChecked()">delete selected questions</button>
+ <form id="list" action="/action_page.php" method="get">
+  <input type="checkbox" id=0 name="question">Bacon<br>
+  <input type="checkbox" id=1 name="question">Soup<br>
+  <input type="checkbox" id=2 name="question">op 3<br>
+  <input type="checkbox" id=3 name="question">op 4<br>
+  <input type="checkbox" id=4 name="question">op 5<br>
+  <input type="checkbox" id=5 name="question">op 6<br>
+ </form>
+ <br>
+ New checkbox: <input type="text" id="newQuest">
+ <input type='button' onclick="addText()" value='Submit'/>
+ <script type="text/javascript">
+  function isChecked() { //search up remove child "nodes" https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_removechild
+   var list = document.getElementById("list");
+   var listLength = (list.childNodes.length-1)/4;
+   console.log(listLength);
+   var doIt = confirm('Delete selected questions?');
+   if(doIt) {
+    for(var i=listLength-1;i>=0;i--) {
+     if(document.getElementById(i).checked) {
+      list.removeChild(list.childNodes[4*i+1]);
+      list.removeChild(list.childNodes[4*i+1]);
+      list.removeChild(list.childNodes[4*i+1]);
+     }
+    }
+   }
+   //list.removeChild(list.childNodes[0]);//deletes first object-->
+   //search how to add items on link by Flame Trap https://stackoverflow.com/questions/17773938/add-a-list-item-through-javascript
+   //Also test on http://jsfiddle.net/FlameTrap/3jDZd/
+  }
+ </script>
+  <script type="text/javascript">
+   function addText() {
+    var list = document.getElementById('list');
+    var question = document.getElementById('newQuest').value;
+    var entry = document.createElement('text');
+    entry.appendChild(document.createTextNode(question));
+    list.appendChild(entry);
+   }
+  </script>
+</body>
+</html>
