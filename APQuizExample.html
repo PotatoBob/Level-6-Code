@@ -47,6 +47,7 @@
 
 function startupFirst() {
   body = document.getElementById("docBody");
+  body.innerHTML+="<form action = \"APQuizExample.html\"><br>Which Quiz<br><input type=\"radio\" name=\"file\" value=0>Level 0<br><input type=\"radio\" name=\"file\" value=1>Level 1<br><input type = \"submit\" value = \"SUBMIT\"></form>";
   body.innerHTML+="<button id=\"buttonThing\" onclick=\"startup()\">Click on me</button>"+"<br>";
 }
 
